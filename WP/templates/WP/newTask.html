@@ -1,0 +1,52 @@
+{%  extends 'WP/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="newTaskForm" id="myForm">
+        <h4>New Task</h4>
+        <form method="POST" action="">
+            {% csrf_token %}
+
+
+                <table class="formTable">
+                        <tr>
+                            <td>
+                                <label for="title" class="popupTitles">{{ form.title.label }}</label>
+                                <br>
+                                {{ form.title }}
+                                <br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="description" class="popupTitles">{{ form.description.label }}</label>
+                                <br>
+                                {{ form.description }}
+                                <br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="priority" class="popupTitles">{{ form.priority.label }}</label>
+                                <br>
+                                {{form.priority}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="status" class="popupTitles">{{ form.status.label }}</label>
+                                <br>
+                                {{form.status}}
+                            </td>
+                        </tr>
+                    </table>
+
+
+
+            <a  id="close" class="buttons" href="{% url 'home' %}">Close</a>
+            <button type="submit" id="submit" class="buttons" onclick="closeNewTaskWindow()">Create</button>
+        </form>
+    </div>
+
+{% endblock %}

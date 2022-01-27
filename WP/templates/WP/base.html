@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WeeklyPlanner</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+    <body>
+
+
+        <!-- top line with title and my account button -->
+        <header>
+            <div class="menu-btn">
+                <div class="menu-btn__burger"></div>
+            </div>
+
+            <div class="title">
+                WEEKLY PLANNER
+            </div>
+
+            <span class="dropown">
+                <button onclick="showMenu()" class="dropdownButton" id="dropdownBut">
+                    <span>{{ request.user }}</span>
+                    <span><img src="{% static 'media/prof.png' %}"></span>
+                    <span><img src="{% static 'media/arrow.png' %}" id="arrow1"></span>
+                </button>
+                <div id="myProfileDropdown" class="dropdownMenu">
+                    <a href="" class="dropdownMenu">My profile</a>
+                    <a href="" class="dropdownMenu">Settings</a>
+                    <a href="{% url 'logout' %}" class="dropdownMenu">Log out</a>
+                </div>
+            </span>
+
+        </header>
+
+        <!-- bin for calendar, sidebar & pop up -->
+        <main>
+
+            <!-- sidebar -->
+            <nav class="nav">
+                <a href="{% url 'home' %}" class="nav">Main screen</a>
+                <a href="{% url 'backlog' %}" class="nav">Task List</a>
+                <button class="sidebarDropdownButton">Teams<i class="fa fa-caret-down"></i></button>
+                <div class="sidebarDropdownContainer">
+                    {% for team in teams %}
+                        <a href="{% url 'team' team.id %}" class="sidebarDropdownContainer">&emsp;{{ team.name }}</a>
+                    {% endfor %}
+                </div>
+                <a href="{% url 'report' %}" class="nav"  >Productivity report</a>
+            </nav>
+
+            {% block content %}
+
+            {% endblock %}
+
+        </main>
+    </body>
+
+<script src="{% static 'js/script.js' %}"></script>
+</html>

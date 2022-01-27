@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log in</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body class="forms">
+
+    <div class="newTaskForm" id="myFormLog">
+
+        <a href="" id="on"  class="formTitle">LOG IN</a><a href="{% url 'register' %}" id="off" onclick="switchToReg()" class="formTitle">REGISTER</a>
+
+        {% for message in messages %}
+            <p class="registerInfo">{{ message }}</p>
+        {% endfor %}
+
+        <form method="POST" action="">
+            {%  csrf_token %}
+            <table class="formTable" id="logForm">
+                <tr>
+                    <td>
+                    <label for="username" class="popupTitles">Username</label>
+                    <br>
+                    <input type="text" name="username" required id="username">
+                    <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    <label for="password" class="popupTitles">Password</label>
+                    <br>
+                    <input type="text" name="password" required id="password">
+                    <br>
+                    </td>
+                </tr>
+            </table>
+            <button type="submit" name="submit" id="submit" class="buttons">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

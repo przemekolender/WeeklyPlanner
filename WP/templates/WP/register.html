@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log in</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body class="forms">
+
+    <div class="newTaskForm" id="myFormReg">
+        <a href="{% url 'login' %}"  id="off" class="formTitle">LOG IN</a><a href="" id="on" class="formTitle">REGISTER</a>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <table class="formTable" id="regForm">
+                <tr>
+                    <td>
+                    {{ reg.username.label }}
+                    <br>
+                     {{ reg.username }}
+                    <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{ reg.email.label }}
+                        <br>
+                        {{ reg.email }}
+                        <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                         {{ reg.password1.label }}
+                        <br>
+                        {{ reg.password1 }}
+                        <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{ reg.password2.label }}
+                        <br>
+                        {{ reg.password2 }}
+                        <br>
+                    </td>
+                </tr>
+            </table>
+
+            <button type="submit" name="submit" id="submit" class="buttons">Submit</button>
+        </form>
+        {% for key, value in reg.errors.items %}
+            {% for err in value %}
+                <p class="registerInfo">{{ err }}<p>
+            {% endfor %}
+        {% endfor %}
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+{%  extends 'WP/base.html' %}
+{% load static %}
+
+{% block content %}
+
+            <!-- new task form pop up
+            <div class="newTaskForm" id="myForm">
+                <h4>New Task</h4>
+                <form method="POST" action="">
+
+                    <button type="submit" id="close" onclick="closeNewTaskWindow()">Close</button>
+                    <button type="submit" id="submit" onclick="closeNewTaskWindow()">Create</button>
+                </form>
+            </div>
+            -->
+
+
+            <!-- main space-->
+            <span class="mainScreen">
+
+                <!-- Big taks window -->
+                <div class="taskBig" id="bigTaskWindow">
+                    Zadanie
+                    <button onclick="closeBigTaskWindow()" class="taskBig">x</button>
+                </div>
+
+                <!-- buttons -->
+                <div>
+                    <select id="pname">
+                        <option value="1">Previous week</option>
+                        <option value="2" selected="selected">This week</option>
+                        <option value="3">Next week</option>
+                        <option value="4">Next next week</option>
+                    </select>
+                    <button class="newTask" id="newTaskFrom" onclick="openNewTaksWindow()">
+                        <a href="{% url 'newtask' %}">Task List</a>
+                    </button>
+
+
+                </div>
+
+                <!-- Week view table -->
+                <div>
+                    <table class="weekView">
+                        <tr class="weekView">
+                            <th class="weekView">Monday</th>
+                            <th class="weekView">Tuesday</th>
+                            <th class="weekView">Wednesday</th>
+                            <th class="weekView">Thursday</th>
+                            <th class="weekView">Friday</th>
+                            <th class="weekView">Saturday</th>
+                            <th class="weekView">Sunday</th>
+                        </tr>
+                        <tr class="weekView">
+                            <td class="weekView"></td>
+                            <td class="weekView"></td>
+                            <td class="weekView"></td>
+                            <td class="weekView"></td>
+                            <td class="weekView"></td>
+                            <td class="weekView"></td>
+                            <td class="weekView"></td>
+                        </tr>
+
+                    </table>
+
+                <!-- Place for tasks -->
+                </div>
+                <h3>Tasks</h3>
+                <div class="taskSection">
+                    <span class="taskSectionSpan">
+                        <h5>To do</h5>
+
+                            {% for i in todo %}
+
+                                <div class="taskSmall"  draggable="true">
+                                    <a class="smallToBig" onclick="openBigTaskWindow()">{{ i.title }}</a>
+                                    <a class="update" href="{% url 'update' i.id %}">edit</a>
+                                    <p class="status">{{  i.priority }}</p>
+                                </div>
+
+                            {% endfor %}
+
+                    </span>
+                    <span class="taskSectionSpan">
+                        <h5>In progress</h5>
+                            {% for i in inProgress %}
+
+                                <div class="taskSmall"  draggable="true">
+                                    <a class="smallToBig" onclick="openBigTaskWindow()">{{ i.title }}</a>
+                                    <a class="update" href="{% url 'update' i.id %}">edit</a>
+                                    <p class="status">{{  i.priority }}</p>
+                                </div>
+
+                            {% endfor %}
+                    </span>
+                    <span class="taskSectionSpan">
+                        <h5>Done</h5>
+
+                            {% for i in done %}
+
+                                <div class="taskSmall"  draggable="true">
+                                    <a class="smallToBig" onclick="openBigTaskWindow()">{{ i.title }}</a>
+                                    <a class="update" href="{% url 'update' i.id %}">edit</a>
+                                    <p class="status">{{  i.priority }}</p>
+
+                                </div>
+
+                            {% endfor %}
+                    </span>
+                </div>
+            </span>
+
+{% endblock %}

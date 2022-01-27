@@ -1,0 +1,18 @@
+{% extends 'WP/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="newTaskForm" id="myForm">
+                <h4>New Task</h4>
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    {{ form }}
+
+
+                    <button type="submit" id="close" onclick="closeNewTaskWindow()">Close</button>
+                    <button type="submit" id="submit" onclick="closeNewTaskWindow()">Create</button>
+                </form>
+            </div>
+
+{% endblock %}

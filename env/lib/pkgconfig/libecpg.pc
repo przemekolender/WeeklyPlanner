@@ -1,0 +1,9 @@
+Name: libecpg
+Description: PostgreSQL libecpg library
+Url: http://www.postgresql.org/
+Version: 12.9
+Requires: 
+Requires.private: libpq libpgtypes
+Cflags: -I/home/przemek/anaconda3/envs/WeeklyPlanner/include
+Libs: -L/home/przemek/anaconda3/envs/WeeklyPlanner/lib -lecpg
+Libs.private: -L/home/przemek/anaconda3/envs/WeeklyPlanner/lib -lpgcommon -lpgport -lm
