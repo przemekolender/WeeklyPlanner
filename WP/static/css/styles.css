@@ -3,7 +3,16 @@
     margin: 0;
     padding: 0;
     font-family: "Avantgarde", sans-serif;
+    font-size: 16px;
 }
+
+@media screen and (max-width : 400px){
+    header .title{
+        font-size: 8pt;
+        display: flex;
+    }
+}
+
 
 /* ---------- header --------------------------------------------------------------------------- */
 header{
@@ -20,18 +29,15 @@ header{
     z-index: 9;
 }
 
-title.header{
-    font-size: 20pt;
+header .title{
+    font-size: 1.5rem;
     font-weight: bold;
-    display: inline-block;
+    display: flex;
     vertical-align: middle;
+    max-width: 48%;
 }
 
-@media screen and (max-width : 400px){
-    title.header{
-        font-size: 10pt;
-    }
-}
+
 
 /* ---------- hamburger button styles ---------------------------------------------------------- */
 .menu-btn {
@@ -90,12 +96,14 @@ title.header{
     transform: rotate(-45deg) translate(35px, 35px);
 }
 
+
+
 /* ---------- Sidebar -------------------------------------------------------------------------- */
 
 .nav{
     position: fixed;
     top: 55px;
-    left: -25%;
+    left: -50%;
     height: 100vh;
     width: 25%;
     background-color: lightgray;
@@ -164,6 +172,10 @@ a.sidebarDropdownContainer{
 .fa-caret-down {
   float: right;
   padding-right: 8px;
+}
+
+@media screen and (max-width : 540px) {
+
 }
 
 /* ---------- profile button ------------------------------------------------------------------- */
