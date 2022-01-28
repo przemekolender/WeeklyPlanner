@@ -308,6 +308,20 @@ h3{
       height: 70%;
 }
 
+@media screen and (min-width: 601){
+    #myForm{
+      height: 86%;
+}
+
+#myFormLog{
+      height: 50%;
+}
+
+#myFormReg{
+      height: 70%;
+}
+}
+
 .newTask{
     float: right;
 }
@@ -436,13 +450,12 @@ a.formTitle:hover{
 p.registerInfo{
     position: relative;
     display: block;
-    width: 95%;
+    width: 100%;
     text-align: center;
     justify-content: center;
     align-items: center;
     margin-top: 0;
     padding-top: 0;
-    left: 5%;
     padding-bottom: 10px;
 }
 
