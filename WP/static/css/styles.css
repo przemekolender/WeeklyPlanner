@@ -308,7 +308,7 @@ h3{
       height: 70%;
 }
 
-@media screen and (min-width: 601){
+@media screen and (min-width: 601px){
     #myForm{
       height: 86%;
 }
