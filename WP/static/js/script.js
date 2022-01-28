@@ -4,6 +4,7 @@ function showMenu(){
     img.style.transform = "rotate(180deg)";
 }
 
+
 window.onclick = function(event){
     if (!event.target.matches('.dropdownButton')){
         var dropdowns = document.getElementsByClassName("dropdownMenu");
@@ -12,8 +13,8 @@ window.onclick = function(event){
             var openDropdown = dropdowns[i];
             if (openDropdown.classList.contains('show')){
                 openDropdown.classList.remove('show');
-            };
-        };
+            }
+        }
         var img = document.getElementById("arrow1");
         img.style.transform =  "";
     }    
@@ -71,7 +72,7 @@ smallTasks.forEach(smallTask =>{
 containers.forEach(container => {
     container.addEventListener("dragover", e => {
         e.preventDefault()
-        const afterElement = getDragAfterElement(container, e.clienyY);
+        const afterElement = getDragAfterElement(container, e.clientY);
         const drag = document.querySelector(".smallTaskDragging");
         if(afterElement == null){
             container.appendChild(drag)
@@ -143,14 +144,14 @@ for (i = 0; i < dropdown.length; i++) {
 
 // ---------- switch between logging and registaration ----------------------------------------- */
 
-function switchToLog(){
-    //document.getElementById("log").style.backgroundColor = "slategrey";
-    //document.getElementById("reg").style.backgroundColor = "black";
-    //document.getElementById("myForm").style.height = "50%";
-}
-
-function switchToReg(){
-    //document.getElementById("log").style.backgroundColor = "black";
-    //document.getElementById("reg").style.backgroundColor = "slategrey";
-    //document.getElementById("myForm").style.height = "70%";
-}
+// function switchToLog(){
+//     document.getElementById("log").style.backgroundColor = "slategrey";
+//     document.getElementById("reg").style.backgroundColor = "black";
+//     document.getElementById("myForm").style.height = "50%";
+// }
+//
+// function switchToReg(){
+//     document.getElementById("log").style.backgroundColor = "black";
+//     document.getElementById("reg").style.backgroundColor = "slategrey";
+//     document.getElementById("myForm").style.height = "70%";
+// }

@@ -7,6 +7,7 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     X-Content-Type-Options: nosniff
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
     <body>
 
@@ -23,9 +24,9 @@
 
             <span class="dropown">
                 <button onclick="showMenu()" class="dropdownButton" id="dropdownBut">
-                    <span>{{ request.user }}</span>
-                    <span><img src="{% static 'media/prof.png' %}"></span>
-                    <span><img src="{% static 'media/arrow.png' %}" id="arrow1"></span>
+                    <span><img src="{% static 'media/prof.png' %}" alt=""></span>
+                    <span id="buttonUsername">{{ request.user }}</span>
+                    <span><img src="{% static 'media/arrow.png' %}" id="arrow1" alt=""></span>
                 </button>
                 <div id="myProfileDropdown" class="dropdownMenu">
                     <a href="" class="dropdownMenu">My profile</a>

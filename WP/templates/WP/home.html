@@ -26,48 +26,48 @@
 
                 <!-- buttons -->
                 <div>
+                    <!--
                     <select id="pname">
                         <option value="1">Previous week</option>
                         <option value="2" selected="selected">This week</option>
                         <option value="3">Next week</option>
                         <option value="4">Next next week</option>
                     </select>
-                    <button class="newTask" id="newTaskFrom" onclick="openNewTaksWindow()">
-                        <a href="{% url 'newtask' %}">Task List</a>
-                    </button>
+                    -->
+                    <a href="{% url 'newtask' %}" class="buttons" id="openNewTaskForm">New task</a>
 
 
                 </div>
 
                 <!-- Week view table -->
-                <div>
-                    <table class="weekView">
-                        <tr class="weekView">
-                            <th class="weekView">Monday</th>
-                            <th class="weekView">Tuesday</th>
-                            <th class="weekView">Wednesday</th>
-                            <th class="weekView">Thursday</th>
-                            <th class="weekView">Friday</th>
-                            <th class="weekView">Saturday</th>
-                            <th class="weekView">Sunday</th>
-                        </tr>
-                        <tr class="weekView">
-                            <td class="weekView"></td>
-                            <td class="weekView"></td>
-                            <td class="weekView"></td>
-                            <td class="weekView"></td>
-                            <td class="weekView"></td>
-                            <td class="weekView"></td>
-                            <td class="weekView"></td>
-                        </tr>
-
-                    </table>
+                <div class="eventSection">
+                    <span class="eventSectionSpan" id="leftEvent">
+                        <h5 class="day">Monday</h5>
+                    </span>
+                    <span class="eventSectionSpan">
+                        <h5 class="day">Tuesday</h5>
+                    </span>
+                    <span class="eventSectionSpan">
+                        <h5 class="day">Wednesday</h5>
+                    </span>
+                    <span class="eventSectionSpan">
+                        <h5 class="day">Thursday</h5>
+                    </span>
+                    <span class="eventSectionSpan">
+                        <h5 class="day">Friday</h5>
+                    </span>
+                    <span class="eventSectionSpan">
+                        <h5 class="day">Saturday</h5>
+                    </span>
+                    <span class="eventSectionSpan" id="rightEvent">
+                        <h5 class="day">Sunday</h5>
+                    </span>
+                </div>
 
                 <!-- Place for tasks -->
-                </div>
                 <h3>Tasks</h3>
                 <div class="taskSection">
-                    <span class="taskSectionSpan">
+                    <span class="taskSectionSpan" id="todo">
                         <h5>To do</h5>
 
                             {% for i in todo %}
@@ -81,7 +81,7 @@
                             {% endfor %}
 
                     </span>
-                    <span class="taskSectionSpan">
+                    <span class="taskSectionSpan" id="middle">
                         <h5>In progress</h5>
                             {% for i in inProgress %}
 
@@ -93,7 +93,7 @@
 
                             {% endfor %}
                     </span>
-                    <span class="taskSectionSpan">
+                    <span class="taskSectionSpan" id="done">
                         <h5>Done</h5>
 
                             {% for i in done %}

@@ -2,18 +2,15 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
 from .forms import *
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .decoratots import *
 
-# Create your views here.
 
 @login_required(login_url='login')
 def home(request):
     tasks = request.user.userdata.task_set.all()
-    # user = UserData.objects.get(id=pk)
 
     todo = tasks.filter(status='To do')
     inProgress = tasks.filter(status='In progress')
@@ -24,12 +21,13 @@ def home(request):
     context = {'team': team, 'todo': todo, 'inProgress': inProgress, 'done': done, 'teams': teams}
     return render(request, 'WP/home.html', context=context)
 
+
 def newTask(request):
 
     form = TaskForm()
     if request.method == 'POST':
         form = TaskForm(request.POST)
-        #form.fields['user'] = request.user
+
         if form.is_valid():
             saving = form.save(commit=False)
             saving.user = request.user.userdata
@@ -37,7 +35,7 @@ def newTask(request):
             form.save()
             return redirect('/')
 
-    teams = Teams.objects.all()
+    teams = Teams.objects.filter(users=request.user.id)
     context = {'form': form, 'teams': teams}
 
     return render(request, 'WP/newTask.html', context=context)
@@ -45,12 +43,16 @@ def newTask(request):
 
 @login_required(login_url='login')
 def backlog(request):
-    return render(request, 'WP/backlog.html')
+    teams = Teams.objects.filter(users=request.user.id)
+    context = {'teams': teams}
+    return render(request, 'WP/backlog.html', context=context)
 
 
 @login_required(login_url='login')
 def report(request):
-    return render(request, 'WP/report.html')
+    teams = Teams.objects.filter(users=request.user.id)
+    context={'teams': teams}
+    return render(request, 'WP/report.html', context=context)
 
 
 @login_required(login_url='login')
@@ -61,24 +63,10 @@ def team(request, pk):
     inProgress = team.task_set.filter(status='In progess')
     done = team.task_set.filter(status='Done')
 
-    teams = Teams.objects.all()
+    teams = Teams.objects.filter(users=request.user.id)
 
-    context = {'team' : team, 'todo' : todo, 'inProgress': inProgress, 'done': done, 'teams' : teams}
+    context = {'team': team, 'todo': todo, 'inProgress': inProgress, 'done': done, 'teams': teams}
     return render(request, 'WP/home.html', context=context)
-
-# @login_required(login_url='login')
-# def userPage(request):
-#     tasks = request.user.userdata.task_set.all()
-#     # user = UserData.objects.get(id=pk)
-#
-#     todo = tasks.filter(taskStatus='To do')
-#     inProgress = tasks.filter(taskStatus='In progess')
-#     done = tasks.filter(taskStatus='Done')
-#
-#     teams = Teams.objects.all()
-#
-#     context = {'team' : team, 'todo' : todo, 'inProgress': inProgress, 'done': done, 'teams' : teams}
-#     return render(request, 'WP/home.html', context=context)
 
 
 @login_required(login_url='login')
@@ -95,10 +83,11 @@ def updateTask(request, pk):
             saving.save()
             form.save()
             return redirect('/')
-    teams = Teams.objects.all()
 
-    context = {'form': form, 'teams' : teams}
+    teams = Teams.objects.filter(users=request.user.id)
+    context = {'form': form, 'teams': teams}
     return render(request, 'WP/newTask.html', context=context)
+
 
 @unauthenticated_user
 def register(request):
@@ -121,6 +110,7 @@ def register(request):
     context = {'reg': reg}
     return render(request, 'WP/register.html', context=context)
 
+
 @unauthenticated_user
 def logIn(request):
     if request.method == "POST":
@@ -136,6 +126,7 @@ def logIn(request):
 
     context = {}
     return render(request, 'WP/login.html', context=context)
+
 
 def logOut(request):
     logout(request)

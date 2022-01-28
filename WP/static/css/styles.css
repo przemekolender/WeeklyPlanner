@@ -1,3 +1,7 @@
+@viewport {
+    zoom: 1.0;
+}
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -174,8 +178,16 @@ a.sidebarDropdownContainer{
   padding-right: 8px;
 }
 
-@media screen and (max-width : 540px) {
+@media screen and (max-width : 800px) {
+    .nav.open{
+        width: 45%;
+    }
+}
 
+@media screen and (max-width : 470px) {
+    .nav.open{
+        width: 55%;
+    }
 }
 
 /* ---------- profile button ------------------------------------------------------------------- */
@@ -242,6 +254,17 @@ a.dropdownMenu:hover {
     display: block;
 }
 
+@media screen and (max-width : 420px) {
+    .dropdownButton{
+        width: 25%;
+    }
+
+    #buttonUsername{
+        width : 0;
+        visibility: hidden;
+    }
+}
+
 /* ---------- tasks space ---------------------------------------------------------------------- */
 
 rect{
@@ -253,6 +276,7 @@ h3{
     background-color: slategrey;
     padding: 3px;
     color: white;
+    margin-top: 20px;
 }
 
 /* ---------- new task ------------------------------------------------------------------------- */
@@ -267,15 +291,15 @@ h3{
     width: 40%;
     height: 80%;
     top: 10%;
-    z-index: 9;
+    z-index: 8;
     box-shadow: 0px 16px 32px 10px rgba(0,0,0,0.2);
     transition: all .5s ease-in-out;
     padding-top: 0;
   }
 
-#myForm{
-      height: 80%;
-}
+/*#myForm{*/
+/*      height: 86%;*/
+/*}*/
 
 #myFormLog{
       height: 50%;
@@ -311,6 +335,12 @@ input.newTaskForm{
 #close{
     left: 5%;
 
+}
+
+#openNewTaskForm{
+    float: right;
+    display:block;
+    position:relative;
 }
 
 .buttons{
@@ -429,7 +459,67 @@ body.forms{
     margin-bottom: 10px;
 }
 
-/* ---------- tabela --------------------------------------------------------------------------- */
+@media screen and (max-width: 900px) {
+    .newTaskForm{
+        width: 70%;
+        height: 70%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .newTaskForm{
+        width: 90%;
+        height: 65%;
+    }
+
+    #myFormLog{
+      height: 45%;
+    }
+
+    #myFormReg{
+        height: 60%;
+}
+}
+
+/* ---------- tabel --------------------------------------------------------------------------- */
+
+.eventSection{
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 3px;
+}
+
+.eventSectionSpan{
+    border-style: double;
+    border-color: black;
+    border-width: 2px;
+    height: 100px;
+    width: 14.28%;
+    border-collapse: collapse;
+    display: block;
+    float: left;
+    flex-direction: column;
+    flex-grow: 1;
+    padding-top: 0;
+    border-right-width: 1px;
+    border-left-width: 1px ;
+    margin-top: 3px;
+
+}
+
+h5.day{
+    background-color: slategrey;
+    margin-top: 0;
+    color: white;
+}
+
+#leftEvent{
+    border-left-width: 2px;
+}
+
+#rightEvent{
+    border-right-width: 2px;
+}
 
 
 .weekView{
@@ -444,7 +534,7 @@ td.weekView {
     border-style: double;
     border-color: black;
     border-width: 2px;
-    height: 300px;
+    height: 100px;
     width: 14.28%;
     border-collapse: collapse;
 }
@@ -458,6 +548,25 @@ th.weekView {
     background-color: slategrey;
 }
 
+@media screen and (max-width: 700px) {
+    td.weekView {
+        display: flex;
+        width: 100%;
+    }
+
+    th.weekView {
+        display: flex;
+        width: 100%;
+        height: 30px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .eventSectionSpan {
+        width: 100%;
+    }
+}
+
 /* ---------- smaall task section -------------------------------------------------------------- */
 
 div.taskSection{
@@ -465,7 +574,7 @@ div.taskSection{
     
 }
 
-.taskSectionSpan{
+.taskSectionSpan {
     display: block;
     width: 33.33%;
     float: left;
@@ -474,6 +583,10 @@ div.taskSection{
     flex-grow: 1;
     border-left: 2px solid lightgrey;
     border-right: 2px solid lightgrey;
+}
+
+#middle{
+    border: none;
 }
 
 h5{
@@ -541,6 +654,17 @@ p.status{
     padding-bottom: 3px;
     padding-top: 6px;
     font-size: 10pt;
+}
+
+@media screen and (max-width: 600px) {
+    .taskSectionSpan{
+        width: 100%;
+    }
+
+    h5{
+        background-color: slategrey;
+        margin-top: 10px;
+    }
 }
 
 /* ---------- big task view -------------------------------------------------------------------- */
